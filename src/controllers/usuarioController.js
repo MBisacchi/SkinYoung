@@ -59,25 +59,23 @@ function entrar(req, res) {
     }
 
 }
-
+ //  Criar as vaáriaveis e definir de acordo com o inputs
+ // Fazer tabela do mySql e dar npm start.
 function cadastrar(req, res) {
-    // 3º Criar var para puxar informações do cadastro.html
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
-    var nasc = req.body.nascServer;
+    var dtNasc = req.body.nascServer;
     var senha = req.body.senhaServer;
 
-    // Validações dos valores
     if (nome == undefined) {
-        res.status(400).send("Você não definiu o seu nome");
+        res.status(400).send("Seu nome está undefined!");
     } else if (email == undefined) {
-        res.status(400).send("Você não definiu o seu email");
+        res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
-        res.status(400).send("Você não definiu sua senha");
+        res.status(400).send("Sua senha está undefined!");
     } else {
         
-        // 4 º Colocar a var e ir para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, nasc, senha)
+        usuarioModel.cadastrar(nome, email, dtNasc, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);

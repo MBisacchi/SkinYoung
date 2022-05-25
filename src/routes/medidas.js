@@ -9,6 +9,7 @@ router.get("/ultimas/:idAquario", function (req, res) {
 
 router.get("/tempo-real/:idAquario", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
+    /*req requisição e res de resposta*/
 })
 
 module.exports = router;
