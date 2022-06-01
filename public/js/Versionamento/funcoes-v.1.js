@@ -20,52 +20,6 @@ function validarSessao() {
     }
 }
 
-function validarBotaoPele() {
-    // aguardar();
-
-    var email = sessionStorage.EMAIL_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
-
-    if (email != null && nome != null) {
-        window.location = "../quizPele.html";
-
-        // finalizarAguardar();
-    } else {
-        window.location = "../login.html";
-    }
-}
-
-function validarBotaoSkin() {
-    // aguardar();
-
-    var email = sessionStorage.EMAIL_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
-
-    if (email != null && nome != null) {
-        window.location = "../quizSkin.html";
-
-        // finalizarAguardar();
-    } else {
-        window.location = "../login.html";
-    }
-}
-
-function validarBotaoCabelo() {
-    // aguardar();
-
-    var email = sessionStorage.EMAIL_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
-
-    if (email != null && nome != null) {
-        window.location = "../quizCabelo.html";
-
-        // finalizarAguardar();
-    } else {
-        window.location = "../login.html";
-    }
-}
-
-
 function limparSessao() {
     // aguardar();
     sessionStorage.clear();

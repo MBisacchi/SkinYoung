@@ -29,11 +29,10 @@ body {
 
 .fundo-home{
   background-image: url(".././assets/imgs/home.jpg");
-  height: 600px;
-  background-size: cover;
-  background-position: center;
+  background-size: 220vh;
 
 }
+
 
 .header .container {
   justify-content: space-between;
@@ -71,7 +70,7 @@ body {
 
 .banner {
   height: fit-content;
-  padding: 49px;
+  padding: 85px;
   color: black;
   background-size: cover;
   display: flex;
@@ -80,14 +79,10 @@ body {
 }
 .explicacao{
   margin: 0;
-  height: 363px;
-  display: flex;
   justify-content: center;
-  align-items: center;
-  
 }
 .box_ex{
- 
+  margin: 10px;
   padding-left: 10px;
   padding-right: 10px;
   display: flex;
@@ -151,15 +146,9 @@ button {
   padding: 10px 7px;
 }
 
-.button a {
-  text-decoration: none;
-  color: white;
-
-}
-
 /* Box dos quiz */
-
 .social {
+  background-image: url(".././assets/imgs/home.jpg");
   background-size: 220vh;
   display: flex;
 }
@@ -185,6 +174,7 @@ button {
 
 }
 
+c
 
 .box p {
   text-align: center;
