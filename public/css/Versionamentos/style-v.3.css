@@ -6,13 +6,6 @@ body {
   padding: 0;
   font-family: 'Lucida Sans', 'Lucida Sans', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-h3{
-  color: #be713a;
-}
-h4{
-  color: #be713a;
-}
-
 /*Logotipo na página*/
 .logo{
  max-width: 110px;
@@ -36,17 +29,10 @@ h4{
 
 .fundo-home{
   background-image: url(".././assets/imgs/home.jpg");
-  height: 635px;
+  height: 600px;
   background-size: cover;
   background-position: center;
 
-}
-
-.fundo-home2{
-  background-image: url(".././assets/imgs/home2.jpg");
-  height: 590px;
-  background-size: cover;
-  background-position: center;
 }
 
 .header .container {
@@ -86,23 +72,18 @@ h4{
 .banner {
   height: fit-content;
   padding: 49px;
-  color: #000000;
+  color: black;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.social{
-  background-color: #e6e3dc;
-}
-
 .explicacao{
   margin: 0;
   height: 363px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e6e3dc;
   
 }
 .box_ex{
@@ -113,8 +94,7 @@ h4{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff88;
-  box-shadow: 0px 10px 40px #00000056;
+  background-color: #807f7f4a;
   margin-bottom: 10px;
   border-radius: 5px;
   width: 800px;
@@ -128,12 +108,11 @@ h4{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff88;
-  box-shadow: 0px 10px 40px #00000056;
+  background-color: #807f7f4a;
   margin-bottom: 10px;
   border-radius: 5px;
   width: 200px;
-  height: 360px;
+  height: 340px;
 }
 
 .banner .container {
@@ -165,14 +144,11 @@ h4{
 /*TODOS os botões*/
 button {
   background-color: #be713a3a;
-  box-shadow: 0px 3px 20px #00000056;
-  color: #be713a;
+  color: white;
   border: 0;
   border-radius: 4px;
   cursor: pointer;
   padding: 10px 7px;
-  margin-left: 15px;
-  
 }
 
 .button a {
@@ -183,22 +159,9 @@ button {
 
 /* Box dos quiz */
 
-.social2 {
+.social {
+  background-size: 220vh;
   display: flex;
-  justify-content: space-between;
-
-}
-
-.social2 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.social2 .container .boxes {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .social .container{
@@ -230,9 +193,8 @@ button {
 
 /* FOOTER */
 
-/* Configuração da div footer */
 .footer {
-  background-color: #eabc9b;
+  background-color: #be713a99;
   height: 56px;
   color: rgb(255, 255, 255);
   display: flex;
@@ -243,15 +205,12 @@ button {
   width: 100%;
 }
 
- /* Configuração do texto do footer */
 .footer .textoFooter {
   display: flex;
   justify-content: center;
   align-items: center;
   
 }
-
-/* Configuração da div onde está os icones de redes sociais */
 .footer .redes  {
   height: 65%;
   padding-right: 50px;
@@ -260,11 +219,10 @@ button {
   align-items: center;
 }
 
-/* Imagens do footer redes sociais */
-.footer .redes a i {
+.footer .redes a img {
   height: 35px;
-  font-size: 45px;
-  color:white;
+  margin: 8px;
+  margin-left: 10px;
 }
 
 
@@ -273,7 +231,6 @@ button {
   margin: 10px;
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -281,14 +238,12 @@ button {
   margin-bottom: 10px;
   border-radius: 5px;
   width: 200px;
-  height: 290px;
-  background-color: #807f7f4a;
-  text-align: center;
+  height: 250px;
 }
 
-.box_log p{
-  justify-content: center;
-  color: #be713a;   
+.box_log h6 {
+  font-size: 30px;
+  font-size: center;
 }
 
 .box_log .formulario span {
@@ -312,11 +267,8 @@ button {
   display: flex;
   flex-direction: column;
   height: 350px;
-  width: 251px;
+  width: 200px;
   font-size: 10px;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 
 .box_cad {
@@ -332,7 +284,7 @@ button {
   margin-bottom: 10px;
   border-radius: 5px;
   width: 200px;
-  height: 470px;
+  height: 400px;
 }
 
 .box_cad span{
@@ -344,6 +296,7 @@ button {
   text-align: center;
   font-size: 23px;
   color: #be713a;
+  font-weight: bold;
 }
 
 input {
