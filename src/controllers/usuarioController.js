@@ -93,9 +93,41 @@ function cadastrar(req, res) {
     }
 }
 
+function inserir(req, res) {
+    var usuario = req.body.usuarioServer;
+    var quiz = req.body.quizServer;
+    var resultado = req.body.resultadoServer;
+
+    if (usuario == undefined) {
+        res.status(400).send("Seu usuario está undefined!");
+    } else if (quiz == undefined) {
+        res.status(400).send("Seu quiz está undefined!");
+    } else if (resultado == undefined) {
+        res.status(400).send("Seu resultado está undefined!");
+    } else {
+        
+        usuarioModel.inserir(usuario, quiz, resultado)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao inserirQuiz! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    testar
+    testar,
+    inserir
 }
