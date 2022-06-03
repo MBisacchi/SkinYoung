@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Nome do site no navegador-->
-    <title>SkinYoung | Quiz Cabelo</title>
+    <title>SkinYoung | Quiz Pele</title>
     <!--Associa o script de funções-->
     <script src="./js/funcoes.js"></script>
     <!--Aribuir logo no navegador-->
@@ -31,54 +31,42 @@
                    </div>
                    <!-- Seleção de páginas no header-->
                    <ul class="navbar">
-                    <span class="hello">
-                        <a href="./dashboard.html" span id="b_usuario"></a>
-                 <button class="button" onclick="limparSessao()">
-                     Sair
-                 </button>
-                </ul>
+                       <li>
+                           <a href="./index.html">Home</a>
+                       </li>
+                       <li>
+                           <a class="selAgora">Sobre</a>
+                       </li>
+                       |
+                       <li>
+                            <a href="./login.html">Login</a>
+                        </li>
+                        <li>
+                            <a href="./cadastro.html">Cadastre-se</a>
+                        </li>
+
+                   </ul>
                </div>
            </div>
     <!--Fim da header-->
 
-     <!--Começo do quiz-->
+    <!--Começo do Sobre-->
+    <div class="container_sobre">
 
-        <div class="boxQuiz">
-            <p>Cabelo</p>
-            Se você ficar sem lavar seu cabelo por um dia, seu couro cabeludo fica:
-            <select class="sel_diaadia">
-                <option value="1">Oleoso</option>
-                <option value="2">Normal</option>
-        </select>
+        <div class="box_sobre">
         <br>
-            O seu cabelo está com alguma química:
-            <select class="sel_quimica">
-                <option value="1">Sim</option>
-                <option value="2">Não</option>
-        </select>
+            <h3>Sobre o projeto</h3>
+            <p>
+                Três a cada dez brasileiros tem algum tipo de alergia e muitas vezes se dá pela a falta de conhecimento do usuário na hora de escolher 
+                tipos de produtos que não são compativeis com o seu organismo.
+                Este site está para acabar com as suas dúvidas de forma prática e rápido, faça os quiz e tinha acesso gratuitamente ao análise feita 
+                atráves de suas respostas.
+            </p>
         <br>
-            No momento atual,O seu cabelo está com brilho?
-            <select class="sel_brilho">
-                <option value="1">Sim</option>
-                <option value="2">Não</option>
-        </select>
-        <br>
-            O seu cabelo está com balanço?
-            <select class="sel_balanço">
-                <option value="1">Sim</option>
-                <option value="2">Não</option>
-        </select>
-        <br>
-            O seu cabelo está quebrando?
-            <select class="sel_quebra">
-                <option value="1">Sim</option>
-                <option value="2">Não</option>
-        </select>
-    
-     <br>
-    </div>
+        </div>
     </div>
     
+        </div>
     </div>
 </div>
 
@@ -105,6 +93,3 @@
 </body>
 
 </html>
-<script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-</script>

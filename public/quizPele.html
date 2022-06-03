@@ -14,12 +14,14 @@
     <link rel="icon" href="./assets/icon/LogoDermYoungIcone-v2.png">
     <!--Associa o script em css-->
     <link rel="stylesheet" href="./css/style.css">
+    <!-- Importação dos icones de redes no footer  -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     
    
 </head>
-     <body>
+     <body onload="validarSessao()">
         <!-- Tela de fundo home-->
-        <div class="fundo-home">
+        <div class="fundo-home2">
            <!--  Começo do Header-->
            <div class="header">
                <div class="container">
@@ -29,61 +31,56 @@
                    </div>
                    <!-- Seleção de páginas no header-->
                    <ul class="navbar">
-                       <li>
-                           <a href="./index.html">Home</a>
-                       </li>
-                       <li>
-                           <a class="selAgora">Quiz</a>
-                       </li>
-                       |
-                       <li>
-                           <a href="./login.html">Login</a>
-                       </li>
-                       <li>
-                           <a  href="./cadastro.html">Cadastre-se</a>
-                       </li>
-                   </ul>
+                    <span class="hello">
+                        <a href="./dashboard.html" span id="b_usuario"></a>
+                 <button class="button" onclick="limparSessao()">
+                     Sair
+                 </button>
+                </ul>
                </div>
            </div>
-           <!--Fim da header-->
     <!--Fim da header-->
 
-    <!--Começo dos cards com os tipos de quiz-->
-    <div class="social">
-        <div class="container">
-            <div class="boxes">
+     <!--Começo do quiz-->
 
-                 <div class="box">
-
-                    <img src="./assets/imgs/skincare.png" alt="skincare">
-                    <h4>Skincare</h4>
-                    <p>Com base no seu tipo de pele, obtenha um cronograma básico de Skincare.</p>
-        
-                    <button class="button" onclick="validarBotaoSkin()"></a>Descubra</button>
-                </div>
-
-                <div class="box">
-                    <img src="./assets/imgs/cabelo.png" alt="cabelo">
-                    <h4>Cabelo</h4>
-                    <p>Descubra a necessidade de seu cabelo através do nosso quiz.</p>
-                    <br>
-                    <button class="button" onclick="validarBotaoCabelo()"></a>Descubra</button>
-                </div>
-
-                <div class="box">
-                    <img src="./assets/imgs/rosto.png" alt="pele">
-                    <h4>Pele</h4>
-                    <p>Responda as perguntas e descubra o seu tipo de pele.</p>
-                    <br>
-                    <button class="button" onclick="validarBotaoPele()">Descubra</button>
-                </div>
-              </div>
-            </div>
+        <div class="boxQuiz">
+            <p>Cabelo</p>
+            Se você ficar sem lavar seu cabelo por um dia, seu couro cabeludo fica:
+            <select class="sel_diaadia">
+                <option value="1">Oleoso</option>
+                <option value="2">Normal</option>
+        </select>
+        <br>
+            O seu cabelo está com alguma química:
+            <select class="sel_quimica">
+                <option value="1">Sim</option>
+                <option value="2">Não</option>
+        </select>
+        <br>
+            No momento atual,O seu cabelo está com brilho?
+            <select class="sel_brilho">
+                <option value="1">Sim</option>
+                <option value="2">Não</option>
+        </select>
+        <br>
+            O seu cabelo está com balanço?
+            <select class="sel_balanço">
+                <option value="1">Sim</option>
+                <option value="2">Não</option>
+        </select>
+        <br>
+            O seu cabelo está quebrando?
+            <select class="sel_quebra">
+                <option value="1">Sim</option>
+                <option value="2">Não</option>
+        </select>
+    
+     <br>
     </div>
-
+    </div>
+    
+    </div>
 </div>
-</div>
-
 
     
 <!--Início do footer-->
@@ -93,11 +90,11 @@
     </div>
     <div class="redes">
 
-        <a href="https://www.facebook.com/MBisacchi"><img src="assets/imgs/logoFacebook.png" alt="facebook" /></a>
+        <a href="https://www.facebook.com/MBisacchi"><i class='bx bxl-facebook-square'></i></a>
 
-        <a href="https://www.instagram.com/maylabisacchi/"><img src="assets/imgs/logoInstagram.png" alt="instagram" /></a>
+        <a href="https://www.instagram.com/maylabisacchi/"><i class='bx bxl-instagram-alt'></i></a>
         
-        <a href="https://www.linkedin.com/in/maylabisacchi/"><img src="assets/imgs/logoLinkedIn.png" alt="linkedin" /></a>
+        <a href="https://www.linkedin.com/in/maylabisacchi/"><i class='bx bxl-linkedin-square'></i></a>
 
       </div>
       

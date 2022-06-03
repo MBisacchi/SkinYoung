@@ -31,12 +31,17 @@
                    </div>
                    <!-- Seleção de páginas no header-->
                    <ul class="navbar">
-                    <span class="hello">
-                        <a href="./dashboard.html" span id="b_usuario"></a>
-                 <button class="button" onclick="limparSessao()">
-                     Sair
-                 </button>
-                </ul>
+                       <li>
+                           <a href="./index.html">Home</a>
+                       </li>
+                       <li>
+                           <a class="selAgora">Quiz</a>
+                       </li>
+                       |
+                       <li>
+                           <a href="./dashboard/dashboard.html">Painel</a>
+                       </li>
+                   </ul>
                </div>
            </div>
     <!--Fim da header-->
@@ -105,6 +110,3 @@
 </body>
 
 </html>
-<script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-</script>
