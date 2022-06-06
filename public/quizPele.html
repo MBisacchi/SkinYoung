@@ -44,36 +44,49 @@
      <!--Começo do quiz-->
 
         <div class="boxQuiz">
-            <p>Cabelo</p>
-            Se você ficar sem lavar seu cabelo por um dia, seu couro cabeludo fica:
-            <select class="sel_diaadia">
+            <div class="alerta_erro">
+                <div class="card_erro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
+            </div>
+            <p>Qual o seu tipo de pele?</p>
+
+            Quando você acorda, como esta a sua pele?
+            <select class="sel_acorda" id="sel_acorda">
                 <option value="1">Oleoso</option>
                 <option value="2">Normal</option>
+                <option value="3">Ressecada</option>
         </select>
         <br>
-            O seu cabelo está com alguma química:
-            <select class="sel_quimica">
+            Você cuida da sua pele?
+            <select class="sel_cuida" id="sel_cuida">
                 <option value="1">Sim</option>
                 <option value="2">Não</option>
+                <option value="3">As vezes</option>
         </select>
         <br>
-            No momento atual,O seu cabelo está com brilho?
-            <select class="sel_brilho">
+            Costuma ter espinhas e cravos:
+            <select class="sel_cravos" id="sel_cravos">
                 <option value="1">Sim</option>
                 <option value="2">Não</option>
+                <option value="3">De vez em quando</option>
         </select>
         <br>
-            O seu cabelo está com balanço?
-            <select class="sel_balanço">
-                <option value="1">Sim</option>
-                <option value="2">Não</option>
+            Como sua pele fica ao lavar o rosto?
+            <select class="sel_lavar" id="sel_lavar">
+                <option value="1">Pele macia</option>
+                <option value="2">Com sensação repuxada</option>
+                <option value="3">Fica vermelha</option>
         </select>
         <br>
-            O seu cabelo está quebrando?
-            <select class="sel_quebra">
-                <option value="1">Sim</option>
-                <option value="2">Não</option>
+            Sua pele tende a ficar oleosa onde?
+            <select class="sel_oleosa" id="sel_oleosa">
+                <option value="1">Zona T (testa, nariz e queixo)</option>
+                <option value="2">Normal</option>
+                <option value="3">Nariz apenas</option>
         </select>
+        <br>
+        <button class="button" onclick="inserir()">Enviar Quiz</button>
     
      <br>
     </div>
@@ -105,3 +118,99 @@
 </body>
 
 </html>
+
+<script>
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function bt_avaliar() {
+        var v_acorda = Number(sel_acorda.value);
+        var v_cuida = Number(sel_cuida.value);
+        var v_cravo = Number(sel_cravos.value);
+        var v_lavar = Number(sel_lavar.value);
+        var v_oleosa = Number(sel_oleosa.value);
+
+         if (v_acorda == 1 && v_cravo == 1 || v_cravo == 3 && v_lavar == 1 && v_oleosa == 1) {
+            alert ('Seu tipo de pele é Oleosa')
+        } else if (v_acorda == 2 && v_cravo == 2 && v_lavar == 2 && v_oleosa == 2 || v_oleosa == 3) {
+            alert ('Seu tipo de pele é Normal')
+        } else if (v_acorda == 3 && v_lavar == 3){
+            alert ('Seu tipo de pele é sensível')
+        }
+    }
+
+    function inserir() {
+        var usuarioVar = sessionStorage.ID_USUARIO;
+        var quizVar = 2;
+        var resultadoVar = "";
+
+        var v_acorda = Number(sel_acorda.value);
+        var v_cuida = Number(sel_cuida.value);
+        var v_cravo = Number(sel_cravos.value);
+        var v_lavar = Number(sel_lavar.value);
+        var v_oleosa = Number(sel_oleosa.value);
+
+         if (v_acorda == 1 && v_lavar == 1 && v_oleosa == 1) {
+            resultadoVar = "Oleosa";
+            alert (`Seu tipo de pele é ${resultadoVar}`);
+            
+        } else if (v_acorda == 2 && v_cravo == 2 && v_lavar == 2 && v_oleosa == 2 ) {
+            resultadoVar = "Normal"
+            alert ('Seu tipo de pele é Normal');
+
+        } else {
+            resultadoVar = "Seca"
+            alert ('Seu tipo de pele é sensível')
+        }
+
+        if (usuarioVar == "" || quizVar == "" || resultadoVar == "" ) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        fetch(`/usuarios/inserir/:${usuarioVar}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                usuarioServer: usuarioVar,
+                quizServer: quizVar,
+                resultadoServer: resultadoVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Inserção realizada com sucesso!";
+
+                setTimeout(() => {
+                    window.location = "dashboard.html";
+                }, "2000")
+                
+                limparFormulario();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+</script>

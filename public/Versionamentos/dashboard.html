@@ -19,7 +19,7 @@
    
 </head>
 
-<body onload="validarSessao(), contadorPele(), contadorSeca()">
+<body onload="validarSessao()">
         <!-- Tela de fundo home-->
         <div class="fundo-home2">
            <!--  Começo do Header-->
@@ -33,7 +33,7 @@
                    <ul class="navbar">
                        <span class="hello">
                         <a class="selAgora" span id="b_usuario">usuario</a>
-                    </span>
+                       </span>
                     <button class="button" onclick="limparSessao()">
                         Sair
                     </button>
@@ -55,8 +55,7 @@
                     </div>
     
                     <div class="box_resul">
-                        <h3><span id="b_mostrarCabelo"></span></h3>
-                        <h3><span id="b_contadorCabelo"></span> usuários com o cabelo oleoso!</h3>
+                        <p>Analitics</p>
                             <br>
                     </div>                  
                 </div>
@@ -87,15 +86,11 @@
                         <br>
                 </div>
                 <div class="box_resul">
-                    <div ></div>
-                    <h3><span id="b_mostrarPele"></span></h3>
-                    <h3><span id="b_contadorPele"></span> usuários com a pele oleosa!</h3>
+                    <p>Analitics</p>
                         <br>
-                    <h3><span id="b_contadorSeca"></span> usuários com a pele seca!</h3>
-                        <br>
-                </div>                     
+                </div>                  
 
-            </div>
+                    </div>
                   
                 </div>
               
@@ -134,83 +129,26 @@
 
     let proximaAtualizacao;
 
-    // window.onload = obterDadosGrafico(1);
+    window.onload = obterDadosGrafico(1);
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
-    function contadorPele() {
-        var contadorPeleVar = document.getElementById("b_contadorPele");
-
-        fetch("/usuarios/contadorPele").then(function (resposta) {
-            if (resposta.ok) {
-                resposta.json().then(function (json) {
-                    console.log(`Usuários: ${JSON.stringify(json)}`);
-                    contadorPeleVar.innerHTML = json[0].contagemPeleOleosa;
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-    
-    }
-
-    function contadorSeca() {
-        var contadorSecaVar = document.getElementById("b_contadorSeca");
-
-        fetch("/usuarios/contadorSeca").then(function (resposta) {
-            if (resposta.ok) {
-                resposta.json().then(function (json) {
-                    console.log(`Usuários: ${JSON.stringify(json)}`);
-                    contadorSecaVar.innerHTML = json[0].contagemPeleSeca;
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-    
-    }
-
-    function mostrar() {
-        var mostrarPeleVar = document.getElementById("b_mostrarPele");
-
-        fetch("/usuarios/mostrar").then(function (resposta) {
-            if (resposta.ok) {
-                resposta.json().then(function (json) {
-                    console.log(`Usuários: ${JSON.stringify(json)}`);
-                    mostrarPeleVar.innerHTML = json[0].resultado;
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-    
-    }
 
     //verificar_autenticacao();
 
     // altere aqui como os dados serão exibidos
     // e como são recuperados do BackEnd
-    function obterDadosGrafico() {
+    function obterDadosGrafico(idAquario) {
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/medidas/ultimas`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta);
+                    plotarGrafico(resposta, idAquario);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -223,23 +161,23 @@
     }
 
     // só altere aqui se souber o que está fazendo!
-    function plotarGrafico(resposta) {
+    function plotarGrafico(resposta, idAquario) {
         console.log('iniciando plotagem do gráfico...');
 
         var dados = {
             labels: [],
             datasets: [
                 {
-                    yAxisID: 'y-pele',
-                    label: 'Pele',
+                    yAxisID: 'y-umidade',
+                    label: 'Umidade',
                     borderColor: '#32B9CD',
                     backgroundColor: '#32b9cd8f',
                     fill: true,
                     data: []
                 },
                 {
-                    yAxisID: 'y-cabelo',
-                    label: 'Cabelo',
+                    yAxisID: 'y-temperatura',
+                    label: 'Temperatura',
                     borderColor: '#FFF',
                     backgroundColor: '#32b9cd8f',
                     fill: true,
@@ -251,8 +189,8 @@
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             dados.labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.pele);
-            dados.datasets[1].data.push(registro.cabelo);
+            dados.datasets[0].data.push(registro.umidade);
+            dados.datasets[1].data.push(registro.temperatura);
         }
 
         console.log(JSON.stringify(dados));
@@ -311,14 +249,14 @@
 		}, 2000);
 
         //Atualiza os dados de 5 em 5 segundos
-        setTimeout(() => atualizarGrafico(dados), 2000);
+        setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
     }
 
     // só mexer se quiser alterar o tempo de atualização
     // ou se souber o que está fazendo!
-    function atualizarGrafico(dados) {
+    function atualizarGrafico(idAquario, dados) {
 
-        fetch(`/medidas/tempo-real`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
@@ -329,17 +267,17 @@
                     dados.labels.shift(); // apagar o primeiro
                     dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
                     dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                    dados.datasets[0].data.push(novoRegistro[0].pele); // incluir uma nova medida de umidade
+                    dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
                     dados.datasets[1].data.shift();  // apagar o primeiro de umidade
-                    dados.datasets[1].data.push(novoRegistro[0].cabelo); // incluir uma nova medida de umidade
+                    dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de umidade
 
                     window.grafico_linha.update();
 
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(dados), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(dados), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
             }
         })
             .catch(function (error) {

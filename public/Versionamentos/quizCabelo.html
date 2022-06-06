@@ -44,12 +44,11 @@
      <!--Começo do quiz-->
 
         <div class="boxQuiz">
-            <p>Como está a saúde do seu cabelo?</p>
-
+            <p>Cabelo</p>
             Se você ficar sem lavar seu cabelo por um dia, seu couro cabeludo fica:
             <select class="sel_diaadia">
-                <option value="1">Normal</option>
-                <option value="2">Oleoso</option>
+                <option value="1">Oleoso</option>
+                <option value="2">Normal</option>
         </select>
         <br>
             O seu cabelo está com alguma química:
@@ -60,14 +59,14 @@
         <br>
             No momento atual,O seu cabelo está com brilho?
             <select class="sel_brilho">
-                <option value="1">Não</option>
-                <option value="2">Sim</option>
+                <option value="1">Sim</option>
+                <option value="2">Não</option>
         </select>
         <br>
             O seu cabelo está com balanço?
-            <select class="sel_balanco">
-                <option value="1">Não</option>
-                <option value="2">Sim</option>
+            <select class="sel_balanço">
+                <option value="1">Sim</option>
+                <option value="2">Não</option>
         </select>
         <br>
             O seu cabelo está quebrando?
@@ -75,8 +74,8 @@
                 <option value="1">Sim</option>
                 <option value="2">Não</option>
         </select>
+    
      <br>
-     <button class="button" onclick="bt_avaliar()">Enviar Quiz</button>
     </div>
     </div>
     
@@ -108,24 +107,4 @@
 </html>
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
-    function bt_avaliar() {
-        var v_dia = sel_diaadia.value
-        var v_quimica = sel_quimica.value
-        var v_brilho = sel.brilho.value
-        var v_balanco = sel_balanco.value
-        var v_quebra = sel_quebra.value
-
-         if (v_dia == 2 && v_quimica == 1 && v_brilho == 1 && v_balanco == 1 && v_quebra == 1) {
-            alert ('A saúde do seu cabelo está prejudicada')
-        } else if (v_dia == 1 && v_quimica == 1 && v_brilho == 2 && v_balanco == 1 && v_quebra == 1) {
-            alert ('A saúde do seu cabelo está prejudicada')
-        } else if (v_dia == 1 && v_quimica == 1 && v_brilho == 1 && v_balanco == 2 && v_quebra == 1) {
-            alert ('A saúde do seu cabelo está prejudicada')
-        } else if (v_dia == 1 && v_quimica == 1 && v_brilho == 1 && v_balanco == 1 && v_quebra == 2) {
-            alert ('A saúde do seu cabelo está prejudicada')
-        } else{
-            alert ('A saúde do seu cabelo está boa')
-        }
-    }
 </script>

@@ -7,58 +7,6 @@ function testar(req, res) {
     res.json("ESTAMOS FUNCIONANDO!");
 }
 
-function contadorPele(req, res) {
-    usuarioModel.contadorPele()
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
-
-function contadorSeca(req, res) {
-    usuarioModel.contadorSeca()
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
-
-function mostrarPele2(req, res) {
-    usuarioModel.mostrarPele()
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
-
-
 function listar(req, res) {
     usuarioModel.listar()
         .then(function (resultado) {
@@ -74,39 +22,6 @@ function listar(req, res) {
                 res.status(500).json(erro.sqlMessage);
             }
         );
-}
-
-function mostrarPele(req, res) {
-    var usuario = req.body.usuarioServer;
-
-    if (usuario == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else {
-        
-        usuarioModel.mostrarPele(usuario)
-            .then(
-                function (resultado) {
-                    console.log(`\nResultados encontrados: ${resultado.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
-
-                    if (resultado.length == 1) {
-                        console.log(resultado);
-                        res.json(resultado[0]);
-                    } else if (resultado.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                    }
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
-
 }
 
 function entrar(req, res) {
@@ -179,12 +94,10 @@ function cadastrar(req, res) {
 }
 
 function inserir(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var usuario = req.body.usuarioServer;
     var quiz = req.body.quizServer;
     var resultado = req.body.resultadoServer;
 
-    // Faça as validações dos valores
     if (usuario == undefined) {
         res.status(400).send("Seu usuario está undefined!");
     } else if (quiz == undefined) {
@@ -193,7 +106,6 @@ function inserir(req, res) {
         res.status(400).send("Seu resultado está undefined!");
     } else {
         
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.inserir(usuario, quiz, resultado)
             .then(
                 function (resultado) {
@@ -203,7 +115,7 @@ function inserir(req, res) {
                 function (erro) {
                     console.log(erro);
                     console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        "\nHouve um erro ao inserirQuiz! Erro: ",
                         erro.sqlMessage
                     );
                     res.status(500).json(erro.sqlMessage);
@@ -217,9 +129,5 @@ module.exports = {
     cadastrar,
     listar,
     testar,
-    inserir,
-    contadorPele,
-    mostrarPele,
-    mostrarPele2,
-    contadorSeca,
+    inserir
 }
