@@ -19,7 +19,7 @@
    
 </head>
 
-<body onload="validarSessao(), contadorPele(), contadorSeca()">
+<body onload="validarSessao(), contadorPele(), contadorSeca(), contadorNormal()">
         <!-- Tela de fundo home-->
         <div class="fundo-home2">
            <!--  Começo do Header-->
@@ -83,15 +83,12 @@
                     
                 <div class="box_resul">
                     <img src="../assets/imgs/rosto.png" alt="pele">
-                    <p>O seu tipo de pele é</p>
+                    <p><span id="b_mostrarPele"></span></h3>
+                    <p><span id="b_contadorPele"></span> usuários com a pele oleosa!</p>
                         <br>
-                </div>
-                <div class="box_resul">
-                    <div ></div>
-                    <h3><span id="b_mostrarPele"></span></h3>
-                    <h3><span id="b_contadorPele"></span> usuários com a pele oleosa!</h3>
+                    <p><span id="b_contadorSeca"></span> usuários com a pele seca!</p>
                         <br>
-                    <h3><span id="b_contadorSeca"></span> usuários com a pele seca!</h3>
+                    <p><span id="b_contadorNormal"></span> usuários com a pele normal!</p>
                         <br>
                 </div>                     
 
@@ -165,6 +162,25 @@
                 resposta.json().then(function (json) {
                     console.log(`Usuários: ${JSON.stringify(json)}`);
                     contadorSecaVar.innerHTML = json[0].contagemPeleSeca;
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    
+    }
+
+    function contadorNormal() {
+        var contadorNormalVar = document.getElementById("b_contadorNormal");
+
+        fetch("/usuarios/contadorNormal").then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (json) {
+                    console.log(`Usuários: ${JSON.stringify(json)}`);
+                    contadorNormalVar.innerHTML = json[0].contagemPeleNormal;
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');

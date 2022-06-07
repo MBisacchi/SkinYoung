@@ -19,6 +19,10 @@ router.get("/contadorSeca", function (req, res) {
     usuarioController.contadorSeca(req, res);
 });
 
+router.get("/contadorNormal", function (req, res) {
+    usuarioController.contadorNormal(req, res);
+});
+
 router.get("/mostrar", function (req, res) {
     usuarioController.mostrarPele2(req, res);
 });
