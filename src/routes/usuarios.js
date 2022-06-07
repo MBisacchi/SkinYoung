@@ -23,6 +23,14 @@ router.get("/contadorNormal", function (req, res) {
     usuarioController.contadorNormal(req, res);
 });
 
+router.get("/contadorSaudavel", function (req, res) {
+    usuarioController.contadorSaudavel(req, res);
+});
+
+router.get("/contadorDanificada", function (req, res) {
+    usuarioController.contadorDanificada(req, res);
+});
+
 router.get("/mostrar", function (req, res) {
     usuarioController.mostrarPele2(req, res);
 });

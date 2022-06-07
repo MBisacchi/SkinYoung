@@ -19,7 +19,7 @@
    
 </head>
 
-<body onload="validarSessao(), contadorPele(), contadorSeca(), contadorNormal()">
+<body onload="validarSessao(), contadorPele(), contadorSeca(), contadorNormal(), contadorSaudavel(), contadorDanificada()">
         <!-- Tela de fundo home-->
         <div class="fundo-home2">
            <!--  Começo do Header-->
@@ -50,13 +50,10 @@
                         
                     <div class="box_resul">
                         <img src="../assets/imgs/cabelo.png" alt="cabelo">
-                        <p>Saúde do seu cabelo está</p>
+                        <br>
+                        <p><span id="b_contadorSaudavel"></span> usuários com o cabelo Saudável!</p>
                             <br>
-                    </div>
-    
-                    <div class="box_resul">
-                        <h3><span id="b_mostrarCabelo"></span></h3>
-                        <h3><span id="b_contadorCabelo"></span> usuários com o cabelo oleoso!</h3>
+                        <p><span id="b_contadorDanificada"></span> usuários com o cabelo Danificado!</p>
                             <br>
                     </div>                  
                 </div>
@@ -83,7 +80,6 @@
                     
                 <div class="box_resul">
                     <img src="../assets/imgs/rosto.png" alt="pele">
-                    <p><span id="b_mostrarPele"></span></h3>
                     <p><span id="b_contadorPele"></span> usuários com a pele oleosa!</p>
                         <br>
                     <p><span id="b_contadorSeca"></span> usuários com a pele seca!</p>
@@ -181,6 +177,44 @@
                 resposta.json().then(function (json) {
                     console.log(`Usuários: ${JSON.stringify(json)}`);
                     contadorNormalVar.innerHTML = json[0].contagemPeleNormal;
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    
+    }
+
+    function contadorSaudavel() {
+        var contadorSaudavelVar = document.getElementById("b_contadorSaudavel");
+
+        fetch("/usuarios/contadorSaudavel").then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (json) {
+                    console.log(`Usuários: ${JSON.stringify(json)}`);
+                    contadorSaudavelVar.innerHTML = json[0].contagemCabeloSaudavel;
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    
+    }
+
+    function contadorDanificada() {
+        var contadorDanificadaVar = document.getElementById("b_contadorDanificada");
+
+        fetch("/usuarios/contadorDanificada").then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (json) {
+                    console.log(`Usuários: ${JSON.stringify(json)}`);
+                    contadorDanificadaVar.innerHTML = json[0].contagemCabeloDanificada;
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');

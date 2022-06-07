@@ -58,6 +58,40 @@ function contadorNormal(req, res) {
         );
 }
 
+function contadorSaudavel(req, res) {
+    usuarioModel.contadorSaudavel()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function contadorDanificada(req, res) {
+    usuarioModel.contadorDanificada()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function mostrarPele2(req, res) {
     usuarioModel.mostrarPele()
         .then(function (resultado) {
@@ -240,4 +274,6 @@ module.exports = {
     mostrarPele2,
     contadorSeca,
     contadorNormal,
+    contadorSaudavel,
+    contadorDanificada,
 }
