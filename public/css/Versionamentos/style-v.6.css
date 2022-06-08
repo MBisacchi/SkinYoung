@@ -1,0 +1,566 @@
+/*CSS do site (Todas as páginas)*/
+
+/*Toda a tag body*/
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lucida Sans', 'Lucida Sans', 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+h3{
+  color: #be713a;
+  margin-left: 30px;
+  margin-right: 20px;
+}
+h4{
+  color: #be713a;
+}
+
+/*Logotipo na página*/
+.logo{
+ max-width: 110px;
+ max-height: 100px;
+
+}
+
+/*Logotipo da header*/
+.logo2{
+  max-width: 110px;
+  max-height: 150px;
+ 
+ }
+
+/**/
+.container {
+  width: 80%;
+  margin: auto;
+  display: flex;
+}
+
+.fundo-home{
+  background-image: url(".././assets/imgs/home.jpg");
+  height: 635px;
+  background-size: cover;
+  background-position: center;
+
+}
+
+.fundo-home2{
+  background-image: url(".././assets/imgs/home2.jpg");
+  height: 590px;
+  background-size: cover;
+  background-position: center;
+}
+
+.header .container {
+  justify-content: space-between;
+}
+
+.header a {
+  text-decoration: none;
+  color: #be713a;
+}
+
+.selAgora {
+  font-weight: 800;
+  color: #be713a;
+  font-weight: bold;
+}
+
+.navbar {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  color: #be713a;
+}
+
+
+.titulo {
+  color: #000000;
+  width: fit-content;
+  font-weight: 500;
+}
+
+
+/* BANNER */
+
+.banner {
+  height: fit-content;
+  padding: 49px;
+  color: #000000;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.social{
+  background-color: #e6e3dc;
+}
+
+.explicacao{
+  margin: 0;
+  height: 363px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e6e3dc;
+  
+}
+.box_ex{
+ 
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff88;
+  box-shadow: 0px 10px 40px #00000056;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 800px;
+  height: 340px;
+}
+.box {
+  margin: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff88;
+  box-shadow: 0px 10px 40px #00000056;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  width: 200px;
+  height: 360px;
+}
+
+.banner .container {
+  height: 400px;
+  font-size: 36px;
+  justify-content: flex-start;
+  align-items: center;
+  }
+
+.tamanho-conteudo { 
+  height: fit-content !important;
+}
+
+.banner p {
+  width: 50%;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  font-size: 20px;
+  font-style: italic;
+  justify-content: flex-start; 
+
+}
+
+.banner .container span {
+  font-weight: 800;
+}
+
+/*TODOS os botões*/
+button {
+  background-color: #be713a3a;
+  box-shadow: 0px 3px 20px #00000056;
+  color: #be713a;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px 7px;
+  margin-left: 15px;
+  
+}
+
+.button a {
+  text-decoration: none;
+  color: white;
+
+}
+
+/* Box dos quiz */
+
+.social2 {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.social2 .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social2 .container .boxes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social .container{
+  justify-content: center;
+}
+
+.box img {
+  width: 100px;
+}
+
+.social .container .boxes {
+  display: flex;
+}
+
+.social p {
+  text-align: center;
+}
+
+.h4{
+ color: #be713a;
+
+}
+
+
+.box p {
+  text-align: center;
+}
+
+
+/* FOOTER */
+
+/* Configuração da div footer */
+.footer {
+  background-color: #eabc9b;
+  height: 56px;
+  color: rgb(255, 255, 255);
+  display: flex;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+ /* Configuração do texto do footer */
+.footer .textoFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+/* Configuração da div onde está os icones de redes sociais */
+.footer .redes  {
+  height: 65%;
+  padding-right: 50px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+/* Imagens do footer redes sociais */
+.footer .redes a i {
+  height: 35px;
+  font-size: 45px;
+  color:white;
+}
+
+
+/* LOGIN */
+.box_log {
+  margin: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  width: 200px;
+  height: 290px;
+  background-color: #807f7f4a;
+  text-align: center;
+}
+
+.box_log p{
+  justify-content: center;
+  color: #be713a;   
+}
+
+.box_log .formulario span {
+  font-size: 12px;  
+  text-align: center;
+}
+
+.banner #div_erros_login {
+  margin-top: 15px;
+}
+
+/* Cadastro */
+
+  .container .box .formulario span{
+    font-size: 12px;
+    text-align: center;
+  } 
+
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  width: 251px;
+  font-size: 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.box_cad {
+  margin: 10px;
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #807f7f4a;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  width: 200px;
+  height: 470px;
+}
+
+.box_cad span{
+  font-size: 15px;
+  text-align: center;
+}
+
+.box_cad p{
+  text-align: center;
+  font-size: 23px;
+  color: #be713a;
+}
+
+input {
+  margin-bottom: 3px;
+  padding: 5px;
+  text-align: center;
+  border-radius: 5px;
+  border: 0;
+}
+
+.alerta_erro{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card_erro {
+  display: none;
+  background-color: #fff;
+  color: black;
+  width: 230px;
+  position: fixed;
+  border-radius: 4px;
+  border: #e6005a 3px solid;
+  padding: 10px;
+  margin-right: 10%;
+  justify-content: flex-start;
+}
+
+.card_erro #mensagem_erro{
+  font-weight: 500;
+  font-size: 20px;
+}
+
+
+.loading-div {
+  width: 40px;
+  margin: auto;
+  display: none;
+}
+
+.loading-div img {
+  height: 30px;
+  width: 30px;
+  align-items: center;
+}
+
+/* PAGINA DOS GRÁFICOS */
+
+.janela {
+  display: flex;
+  width: 100vw;
+}
+
+.header-left a {
+  text-decoration: none;
+  color: white;
+}
+
+.header-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  height: 100vh;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-right: 3px solid #32b9cd;
+  background-color: #212124;
+  /* border: 3px solid pink; */
+}
+
+.dash-right {
+  display: flex;
+  width: 75%;
+  height: fit-content;
+  background-color: #161618;
+  position: relative;
+  top: 0;
+  left: 25%;
+}
+
+.header-left h1 {
+  color: #32b9cd;
+}
+
+.hello {
+  width: 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.hello h3 {
+  color: #e3b062;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.hello h3 span {
+  font-weight: 800;
+}
+
+.btn-nav {
+  width: 40%;
+  color: white;
+  background-color: #e6005a;
+  border-radius: 5px;
+  text-align: center;
+  padding: 2% 5%;
+}
+
+.btn-nav-white {
+  width: 40%;
+  background-color: white;
+  border: 3px solid #e6005a;
+  border-radius: 5px;
+  text-align: center;
+  padding: 2% 5%;
+}
+
+.btn-nav-white h3 {
+  color: #e6005a;
+  padding: 0;
+  margin: 0;
+}
+
+.btn-nav h3,
+.btn-logout h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.btn-logout {
+  margin: 0;
+  padding: 0;
+  width: 20%;
+  background-color: #32b9cd;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px 15px;
+  margin-bottom: 100px;
+  cursor: pointer;
+}
+
+/* Sobre */
+
+.container_sobre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
+}
+
+.container .box_sobre h3 {
+  margin-left: 30px;
+
+}
+
+.box_sobre{
+  margin: 0;
+  height: 370px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff88;
+  box-shadow: 0px 10px 40px #00000056;
+  border-radius: 5px;
+  position: absolute;
+}
+
+/* Quiz - Questões */
+
+.box_lateral {
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 357px;
+    width: 235px;
+    align-items: center;
+    background-color: #ffffff88;
+    box-shadow: 0px 10px 40px #00000056;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.box_resul img {
+  height: 70px;
+  width: 70px;
+}
+
+.boxQuiz{
+ 
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff88;
+  box-shadow: 0px 10px 40px #00000056;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  width: 800px;
+  height: 380px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.boxQuiz p {
+  color: #be713a;
+}

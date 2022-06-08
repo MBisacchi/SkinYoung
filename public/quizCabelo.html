@@ -19,7 +19,7 @@
     
    
 </head>
-     <body>
+     <body onload="validarSessao()">
         <!-- Tela de fundo home-->
         <div class="fundo-home2">
            <!--  Começo do Header-->
@@ -44,39 +44,44 @@
      <!--Começo do quiz-->
 
         <div class="boxQuiz">
+            <div class="alerta_erro">
+                <div class="card_erro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
+            </div>
             <p>Como está a saúde do seu cabelo?</p>
 
             Se você ficar sem lavar seu cabelo por um dia, seu couro cabeludo fica:
-            <select class="sel_diaadia">
+            <select id="sel_diaadia">
                 <option value="1">Normal</option>
                 <option value="2">Oleoso</option>
         </select>
         <br>
             O seu cabelo está com alguma química:
-            <select class="sel_quimica">
+            <select id="sel_quimica">
                 <option value="1">Sim</option>
                 <option value="2">Não</option>
         </select>
         <br>
             No momento atual,O seu cabelo está com brilho?
-            <select class="sel_brilho">
+            <select id="sel_brilho">
                 <option value="1">Não</option>
                 <option value="2">Sim</option>
         </select>
         <br>
             O seu cabelo está com balanço?
-            <select class="sel_balanco">
+            <select id="sel_balanco">
                 <option value="1">Não</option>
                 <option value="2">Sim</option>
         </select>
         <br>
             O seu cabelo está quebrando?
-            <select class="sel_quebra">
+            <select id="sel_quebra">
                 <option value="1">Sim</option>
                 <option value="2">Não</option>
         </select>
      <br>
-     <button class="button" onclick="bt_avaliar()">Enviar Quiz</button>
+     <button class="button" onclick="inserir()">Enviar Quiz</button>
     </div>
     </div>
     
@@ -109,24 +114,83 @@
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-    function bt_avaliar() {
-        var v_dia = sel_diaadia.value
-        var v_quimica = sel_quimica.value
-        var v_brilho = sel.brilho.value
-        var v_balanco = sel_balanco.value
-        var v_quebra = sel_quebra.value
+    function inserir() {
+        var usuarioVar = sessionStorage.ID_USUARIO;
+        var quizVar = 1;
+        var resultadoVar = "";
 
-         if (v_dia == 2 && v_quimica == 1 && v_brilho == 1 && v_balanco == 1 && v_quebra == 1) {
+        var v_dia = Number(sel_diaadia.value);
+        var v_quimica = Number(sel_quimica.value);
+        var v_brilho = Number(sel_brilho.value);
+        var v_balanco = Number(sel_balanco.value);
+        var v_quebra = Number(sel_quebra.value);
+
+        if (v_dia == 2 && v_quimica == 1 && v_brilho == 1 && v_balanco == 1 && v_quebra == 1) {
+            resultadoVar = "Danificada";
             alert ('A saúde do seu cabelo está prejudicada')
         } else if (v_dia == 1 && v_quimica == 1 && v_brilho == 2 && v_balanco == 1 && v_quebra == 1) {
+            resultadoVar = "Danificada";
             alert ('A saúde do seu cabelo está prejudicada')
         } else if (v_dia == 1 && v_quimica == 1 && v_brilho == 1 && v_balanco == 2 && v_quebra == 1) {
+            resultadoVar = "Danificada";
             alert ('A saúde do seu cabelo está prejudicada')
         } else if (v_dia == 1 && v_quimica == 1 && v_brilho == 1 && v_balanco == 1 && v_quebra == 2) {
+            resultadoVar = "Danificada";
             alert ('A saúde do seu cabelo está prejudicada')
         } else{
+            resultadoVar = "Saudável";
             alert ('A saúde do seu cabelo está boa')
         }
+
+        if (usuarioVar == "" || quizVar == "" || resultadoVar == "" ) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        fetch(`/usuarios/inserir/:${usuarioVar}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                usuarioServer: usuarioVar,
+                quizServer: quizVar,
+                resultadoServer: resultadoVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Inserção realizada com sucesso!";
+
+                setTimeout(() => {
+                    window.location = "dashboard.html";
+                }, "2000")
+                
+                limparFormulario();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
     }
     function inserir() {
         var usuarioVar = sessionStorage.ID_USUARIO;
